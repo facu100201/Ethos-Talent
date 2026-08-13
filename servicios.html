@@ -1,0 +1,399 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios — Ethos Talent</title>
+<meta name="description" content="Tres módulos: adecuación al puesto, riesgo de rotación y analítica de equidad. Con los datos que usamos, los que no, quién decide y cómo se impugna.">
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<a class="saltar" href="#principal">Saltar al contenido principal</a>
+
+<header class="cabecera">
+  <div class="progreso" aria-hidden="true"></div>
+  <div class="contenedor cabecera__inner">
+    <a class="logo" href="index.html">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="11" fill="#0A7086"/>
+        <path d="M24 9v27" stroke="#A8DE86" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M11 15h26" stroke="#A8DE86" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="24" cy="9" r="2.6" fill="#A8DE86"/>
+        <path d="M6 15l5 9 5-9" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M32 15l5 9 5-9" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M17 38h14" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+      <span class="logo__marca">Ethos <span>Talent</span></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-principal">
+      <span class="visually-hidden">Abrir menú</span>☰
+    </button>
+    <nav class="nav" id="nav-principal" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html" aria-current="page">Servicios</a>
+      <a href="demo.html">Ver el motor</a>
+      <a href="precios.html">Precios</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="etica.html">Compromiso Ético</a>
+      <a class="btn btn--primario" href="demo.html">Probar la demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="principal">
+
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <span class="kicker">Servicios</span>
+      <h1>Qué hace nuestro software, sin adornos</h1>
+      <p class="ancho-texto">
+        Explicamos los tres módulos con las mismas cinco preguntas: <strong>qué hace, qué datos
+        usa, cuáles no, quién decide y cómo se impugna</strong>. Si un proveedor no puede
+        responderlas, no le compres. Tampoco a nosotros.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= MÓDULO 1 ================= -->
+  <section>
+    <div class="contenedor">
+      <div class="encabezado-seccion">
+        <span class="kicker">Módulo 1</span>
+        <h2>Análisis de Adecuación</h2>
+        <p>Ordena las candidaturas según qué tanto encajan con el puesto, para que empieces a
+        revisar por donde hay más evidencia.</p>
+      </div>
+
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>Qué hace</h3>
+          <p>
+            Toma cinco datos del puesto —experiencia, formación, competencias, disponibilidad y
+            evaluación— y calcula un puntaje de 0 a 100 con una <strong>suma ponderada</strong>.
+            La experiencia se captura por tramos y con rendimientos decrecientes: el salto de 0 a
+            2 años pesa más que el de 10 a 15.
+          </p>
+          <p class="mb-0">
+            No es una caja negra: son pesos que puedes leer, cambiar y auditar. Sabemos que
+            perdemos algo de exactitud frente a modelos más complejos, y lo aceptamos: cuando se
+            decide sobre personas, <strong>poder explicar vale más</strong>.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Quién decide</h3>
+          <p>
+            <strong>Siempre una persona con nombre.</strong> El sistema sugiere un orden y lo
+            explica; no descarta, no manda rechazos ni cierra expedientes.
+          </p>
+          <p class="mb-0">
+            Tu reclutador puede reordenar cuando quiera. Si se aparta de la sugerencia, solo le
+            pedimos que escriba por qué — y eso nos sirve para corregir el modelo.
+          </p>
+        </div>
+        <div class="card card--acento">
+          <h4>Datos que usa</h4>
+          <ul class="lista-limpia">
+            <li><span class="marca-si" aria-hidden="true">✓</span><span><strong>Experiencia</strong> en funciones parecidas, por tramos</span></li>
+            <li><span class="marca-si" aria-hidden="true">✓</span><span><strong>Formación:</strong> si tiene título y cuántas certificaciones vigentes</span></li>
+            <li><span class="marca-si" aria-hidden="true">✓</span><span><strong>Habilidades y competencias</strong> de la vacante</span></li>
+            <li><span class="marca-si" aria-hidden="true">✓</span><span><strong>Disponibilidad</strong> frente a lo que ofreces</span></li>
+            <li><span class="marca-si" aria-hidden="true">✓</span><span><strong>Evaluaciones válidas</strong> que tú aplicaste</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>Datos que no usa</h4>
+          <ul class="lista-limpia">
+            <li><span class="marca-no" aria-hidden="true">✕</span><span><strong>Género y edad</strong> — protegidos; ni directos ni deducidos</span></li>
+            <li><span class="marca-no" aria-hidden="true">✕</span><span><strong>Código postal y colonia</strong> — hablan de origen, no de capacidad</span></li>
+            <li><span class="marca-no" aria-hidden="true">✕</span><span><strong>Cuál universidad</strong> — el prestigio de la escuela repite el privilegio de partida</span></li>
+            <li><span class="marca-no" aria-hidden="true">✕</span><span><strong>Pausas laborales</strong> — castigan cuidados y enfermedad</span></li>
+            <li><span class="marca-no" aria-hidden="true">✕</span><span><strong>Nombre, foto y estado civil</strong> — no dicen nada del desempeño</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout mt-5">
+        <h4>Cómo se impugna</h4>
+        <p class="mb-0">
+          Cualquier candidato puede pedir su desglose completo y una
+          <a href="privacidad.html#revision">revisión humana</a>. Respondemos en 10 días hábiles.
+          Si hubo un error, te avisamos y <strong>la candidatura regresa al proceso</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MÓDULO 2 ================= -->
+  <section class="franja">
+    <div class="contenedor">
+      <div class="encabezado-seccion">
+        <span class="kicker">Módulo 2</span>
+        <h2>Predicción de Permanencia</h2>
+        <p>Calcula el riesgo de rotación temprana de una vacante y te dice qué factores
+        <em>del puesto</em> —no de la persona— lo explican.</p>
+      </div>
+
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>Qué hace</h3>
+          <p>
+            Compara lo que ofreces —salario contra mercado, horario, nivel del puesto, claridad
+            de funciones— con el histórico del sector.
+          </p>
+          <p class="mb-0">
+            El resultado no juzga al candidato, <strong>revisa tu oferta</strong>: «esta vacante
+            tiene 34 % de riesgo de rotación, y lo que más pesa es que el sueldo está 22 % abajo
+            del mercado». Casi siempre el problema está del lado del empleador.
+          </p>
+        </div>
+        <div class="card" style="border-left:4px solid var(--alerta)">
+          <h3>El mal uso que anticipamos</h3>
+          <p>
+            Alguien podría querer usar esto para descartar a quien «parece que se va»: mujeres
+            jóvenes, gente recién egresada o quien tuvo una pausa laboral. Eso es discriminación
+            vestida de estadística.
+          </p>
+          <p class="mb-0">
+            Por eso el módulo <strong>no da probabilidad por persona</strong>. Solo da el riesgo
+            de la vacante y las palancas que puedes mover. La unidad de análisis es el puesto.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MÓDULO 3 ================= -->
+  <section>
+    <div class="contenedor">
+      <div class="encabezado-seccion">
+        <span class="kicker">Módulo 3 — incluido en todos los planes</span>
+        <h2>Analítica de Equidad</h2>
+        <p>El único módulo que no evalúa candidatos: <strong>te audita a ti y nos audita a
+        nosotros</strong>. Detecta si tu proceso está dando resultados desiguales, aunque nadie
+        lo haya buscado.</p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card">
+          <div class="card__icono" aria-hidden="true">◧</div>
+          <h4>Prueba de impacto adverso</h4>
+          <p class="mb-0">Regla del 4/5 en cada etapa. Si el índice baja de 0.80, salta una
+          alerta y el ranking deja de poder exportarse.</p>
+        </div>
+        <div class="card">
+          <div class="card__icono" aria-hidden="true">◨</div>
+          <h4>Fugas en el embudo</h4>
+          <p class="mb-0">Te dice en qué etapa exacta se te está quedando fuera un grupo: filtro
+          inicial, prueba técnica o entrevista.</p>
+        </div>
+        <div class="card">
+          <div class="card__icono" aria-hidden="true">◩</div>
+          <h4>Antes vs. después</h4>
+          <p class="mb-0">Compara los resultados con el proceso manual que tenías.
+          <strong>Si empeoramos tu equidad, te lo decimos</strong>, aunque nos deje mal.</p>
+        </div>
+      </div>
+
+      <div class="callout mt-5">
+        <h4>Por qué no lo cobramos</h4>
+        <p class="mb-0">
+          Cobrar por la función que vigila nuestro propio producto sería conflicto de interés:
+          nos convendría que no auditaras. La equidad no puede ser un plan premium.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CÓMO ENTRENAMOS ================= -->
+  <section class="franja">
+    <div class="contenedor">
+      <div class="encabezado-seccion">
+        <span class="kicker">Cómo se entrena</span>
+        <h2>De dónde salen los datos</h2>
+        <p>Los históricos de contratación arrastran las decisiones sesgadas del pasado. Un
+        modelo descuidado no hereda neutralidad: hereda discriminación y la multiplica.</p>
+      </div>
+
+      <div class="tabla-wrap">
+        <table>
+          <caption>Ficha del modelo <span class="mono">ethos-scoring v3.2</span> — 15 de enero de 2026.</caption>
+          <thead>
+            <tr><th scope="col">Tema</th><th scope="col">Qué hacemos</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Origen de los datos</strong></td>
+              <td>Solo históricos que nuestros clientes ceden con permiso del candidato. Nada
+              comprado ni sacado de redes sociales.</td>
+            </tr>
+            <tr>
+              <td><strong>Consentimiento</strong></td>
+              <td>Doble: lo autoriza el cliente y lo acepta el candidato, que puede retirarlo
+              cuando quiera sin perjudicar su candidatura.</td>
+            </tr>
+            <tr>
+              <td><strong>Sesgo histórico</strong></td>
+              <td>Antes de entrenar corremos la prueba de impacto adverso. Lo que sale
+              contaminado se excluye o se reponderá, y se declara.</td>
+            </tr>
+            <tr>
+              <td><strong>Variables proxy</strong></td>
+              <td>Cada variable se contrasta contra categorías protegidas. Si correlaciona
+              demasiado, se va — aunque el modelo pierda precisión.</td>
+            </tr>
+            <tr>
+              <td><strong>Datos entre clientes</strong></td>
+              <td>Los tuyos <strong>nunca</strong> entrenan el modelo de otro sin permiso
+              expreso de ambos.</td>
+            </tr>
+            <tr>
+              <td><strong>Reentrenamiento</strong></td>
+              <td>Cada trimestre, con su <em>model card</em>: métricas, límites conocidos y qué
+              cambió.</td>
+            </tr>
+            <tr>
+              <td><strong>Auditoría externa</strong></td>
+              <td>Semestral, por un despacho sin acciones en la empresa. Se publica completa,
+              también cuando sale mal.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CIRCUNSTANCIAS / MAL USO ================= -->
+  <section>
+    <div class="contenedor">
+      <div class="encabezado-seccion">
+        <span class="kicker">Riesgos reales</span>
+        <h2>Ocho formas en que esto podría torcerse</h2>
+        <p class="ancho-texto">
+          Tener buen producto y buenas intenciones no basta: el contexto puede echarlo a perder.
+          Estos son los desvíos que vemos venir y cómo cerramos cada uno.
+        </p>
+      </div>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Riesgo</th>
+              <th scope="col">Cómo lo cerramos</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Que el cliente discrimine con la herramienta</strong></td>
+              <td>Cláusula de uso prohibido, revisión de configuraciones raras y suspensión si
+              insiste.</td>
+              <td><span class="pill pill--no">Contractual</span></td>
+            </tr>
+            <tr>
+              <td><strong>Entrenar con datos históricos sesgados</strong></td>
+              <td>Prueba de impacto adverso antes de entrenar; se excluye lo contaminado.</td>
+              <td><span class="pill pill--ok">Técnico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Meter variables proxy</strong> (colonia, prestigio de la universidad,
+              pausas, edad indirecta)</td>
+              <td>Detector de correlación: el campo se rechaza al crearse, no después de dañar a
+              alguien.</td>
+              <td><span class="pill pill--ok">Técnico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Automatizar de más</strong></td>
+              <td>Revisión humana obligatoria, límites de consulta y alerta ante rechazos
+              masivos.</td>
+              <td><span class="pill pill--ok">Técnico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Procesar sin consentimiento</strong></td>
+              <td>Sin registro de permiso, el expediente no se procesa. No es aviso: es
+              bloqueo.</td>
+              <td><span class="pill pill--ok">Técnico</span></td>
+            </tr>
+            <tr>
+              <td><strong>Recortar costos a costa de la justicia</strong></td>
+              <td>El módulo de equidad es gratis y no se puede apagar, justo para que no sea el
+              primer recorte.</td>
+              <td><span class="pill pill--warn">Negocio</span></td>
+            </tr>
+            <tr>
+              <td><strong>Leer una probabilidad como certeza</strong></td>
+              <td>Capacitación antes de dar acceso e intervalos de confianza siempre a la
+              vista.</td>
+              <td><span class="pill pill--warn">Formación</span></td>
+            </tr>
+            <tr>
+              <td><strong>Vigilancia laboral encubierta</strong></td>
+              <td>Fuera del producto: no procesamos datos de empleados ni medimos
+              productividad.</td>
+              <td><span class="pill pill--no">De diseño</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--neutro mt-6">
+        <h4>¿De quién es la responsabilidad?</h4>
+        <p class="mb-0">
+          Si un cliente usa esto para discriminar, buena parte de la culpa es suya. Pero eso no
+          nos salva: tenemos el deber de <strong>no ayudarle técnicamente</strong>. Por eso los
+          controles no son advertencias en un manual, son bloqueos en el código. Lo que todavía
+          no logramos frenar a tiempo está en
+          <a href="etica.html#pendientes">Lo que aún no resolvemos</a>.
+        </p>
+      </div>
+
+      <div class="btn-fila mt-6">
+        <a class="btn btn--primario" href="demo.html">Ver el motor funcionando</a>
+        <a class="btn btn--secundario" href="precios.html">Consultar precios</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie__grid">
+      <div>
+        <h4>Ethos Talent</h4>
+        <p style="font-size:var(--f-sm)">
+          Tecnología que respeta a las personas.<br>
+          Ciudad de México, México.
+        </p>
+        <p class="sello">◆ Auditoría externa semestral publicada</p>
+      </div>
+      <div>
+        <h4>Producto</h4>
+        <ul>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="demo.html">Demostración del motor</a></li>
+          <li><a href="precios.html">Precios y SLA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Transparencia</h4>
+        <ul>
+          <li><a href="etica.html">Compromiso Ético</a></li>
+          <li><a href="etica.html#phronesis">Dilemas que enfrentamos</a></li>
+          <li><a href="etica.html#pendientes">Lo que aún no resolvemos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Para candidatos</h4>
+        <ul>
+          <li><a href="privacidad.html#derechos">Tus derechos</a></li>
+          <li><a href="privacidad.html#revision">Pedir revisión humana</a></li>
+          <li><a href="privacidad.html#denuncia">Canal de denuncia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie__base">
+      <span>© <span data-anio>2026</span> Ethos Talent S.A.P.I. de C.V. — Empresa ficticia con fines académicos.</span>
+      <span>Ana Karen López Jiménez · Fernando Acuña Martínez · Frida Sofía Escamilla Olguín · Pamela Ruíz Velasco</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>

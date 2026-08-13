@@ -1,0 +1,387 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demostración del motor — Ethos Talent</title>
+<meta name="description" content="Motor abierto: mueve los datos, cambia los pesos, lee la explicación de cada punto y corre la prueba de sesgo que bloquea la exportación.">
+<link rel="icon" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<a class="saltar" href="#principal">Saltar al contenido principal</a>
+
+<header class="cabecera">
+  <div class="progreso" aria-hidden="true"></div>
+  <div class="contenedor cabecera__inner">
+    <a class="logo" href="index.html">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="11" fill="#0A7086"/>
+        <path d="M24 9v27" stroke="#A8DE86" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M11 15h26" stroke="#A8DE86" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="24" cy="9" r="2.6" fill="#A8DE86"/>
+        <path d="M6 15l5 9 5-9" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M32 15l5 9 5-9" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M17 38h14" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+      <span class="logo__marca">Ethos <span>Talent</span></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-principal">
+      <span class="visually-hidden">Abrir menú</span>☰
+    </button>
+    <nav class="nav" id="nav-principal" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="demo.html" aria-current="page">Ver el motor</a>
+      <a href="precios.html">Precios</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="etica.html">Compromiso Ético</a>
+      <a class="btn btn--primario" href="precios.html">Ver precios</a>
+    </nav>
+  </div>
+</header>
+
+<main id="principal">
+
+  <section class="cabecera-pagina">
+    <div class="contenedor">
+      <span class="kicker">Demostración pública</span>
+      <h1>Ábrelo, muévelo, trata de romperlo</h1>
+      <p class="ancho-texto">
+        Es el mismo cálculo que corre en producción, con datos ficticios. Sin registro, sin
+        correo y sin versión «completa» que se vea distinta. Si decimos que el modelo es
+        auditable, lo mínimo es dejar que lo audites.
+      </p>
+    </div>
+  </section>
+
+  <section class="compacta">
+    <div class="contenedor">
+      <p class="banner-demo">
+        <span aria-hidden="true">▲</span>
+        <span><strong>Datos sintéticos.</strong> Aquí no se evalúa a nadie real: los perfiles
+        A–E y la población de la auditoría son inventados para esta demo.</span>
+      </p>
+
+      <div class="demo-grid">
+
+        <!-- ---------- PANEL IZQUIERDO: CANDIDATOS ---------- -->
+        <div class="panel">
+          <p class="panel__titulo">Candidaturas · vacante «Analista de datos»</p>
+          <div id="lista-candidatos" role="group" aria-label="Selecciona una candidatura"></div>
+
+          <p class="tenue mt-5 mb-0">
+            El orden es una sugerencia. En producción ninguna ficha se puede rechazar desde
+            aquí: ese botón no existe.
+          </p>
+        </div>
+
+        <!-- ---------- PANEL CENTRAL: DATOS Y SCORE ---------- -->
+        <div class="panel">
+          <p class="panel__titulo">Datos y pesos del modelo</p>
+
+          <div class="score-caja">
+            <div class="score-num" id="score-num">0</div>
+            <p class="score-etq" id="score-etq">Qué tanto encaja con el puesto</p>
+            <div class="score-banda"><i id="score-banda" style="width:0%"></i></div>
+            <p class="tenue mb-0" id="score-intervalo"></p>
+          </div>
+
+          <form id="form-datos">
+
+            <fieldset class="control control--grupo">
+              <legend>Experiencia relevante</legend>
+              <div class="opciones">
+                <label class="opcion"><input type="radio" name="d-exp" value="0"><span>Ninguna</span></label>
+                <label class="opcion"><input type="radio" name="d-exp" value="1"><span>Menos de 1 año</span></label>
+                <label class="opcion"><input type="radio" name="d-exp" value="2"><span>1 a 2 años</span></label>
+                <label class="opcion"><input type="radio" name="d-exp" value="3" checked><span>2 a 5 años</span></label>
+                <label class="opcion"><input type="radio" name="d-exp" value="4"><span>5 a 10 años</span></label>
+                <label class="opcion"><input type="radio" name="d-exp" value="5"><span>Más de 10 años</span></label>
+              </div>
+              <p class="control__ayuda">Solo cuenta la experiencia en funciones equivalentes a las
+              del puesto. Los tramos altos suman menos entre sí: el salto de 0 a 2 años pesa más
+              que el de 10 a 15.</p>
+            </fieldset>
+
+            <fieldset class="control control--grupo">
+              <legend>Formación acreditada</legend>
+
+              <div class="subcampo">
+                <span class="subcampo__etq">¿Cuenta con título universitario?</span>
+                <div class="opciones">
+                  <label class="opcion"><input type="radio" name="d-titulo" value="1" checked><span>Sí</span></label>
+                  <label class="opcion"><input type="radio" name="d-titulo" value="0"><span>No</span></label>
+                </div>
+              </div>
+
+              <div class="subcampo">
+                <span class="subcampo__etq">Títulos técnicos o certificaciones vigentes</span>
+                <div class="opciones">
+                  <label class="opcion"><input type="radio" name="d-certs" value="0"><span>Ninguna</span></label>
+                  <label class="opcion"><input type="radio" name="d-certs" value="1" checked><span>1</span></label>
+                  <label class="opcion"><input type="radio" name="d-certs" value="2"><span>2</span></label>
+                  <label class="opcion"><input type="radio" name="d-certs" value="3"><span>Más de 2</span></label>
+                </div>
+              </div>
+
+              <p class="control__ayuda">Preguntamos <strong>si</strong> tiene título, nunca
+              <strong>cuál</strong> universidad. Las certificaciones suman puntos por su cuenta,
+              así que quien no pudo estudiar una carrera todavía puede competir por este campo.</p>
+            </fieldset>
+
+            <div class="control">
+              <label for="d-comp">Habilidades y competencias
+                <span class="valor" id="v-comp">7 / 10</span></label>
+              <input type="range" id="d-comp" min="1" max="10" step="1" value="7">
+              <p class="control__ayuda">Qué tanto coinciden sus habilidades con las que pide la
+              vacante, en una escala de 1 a 10.</p>
+            </div>
+
+            <div class="control">
+              <label for="d-disp">Disponibilidad
+                <span class="valor" id="v-disp">8 / 10</span></label>
+              <input type="range" id="d-disp" min="1" max="10" step="1" value="8">
+              <p class="control__ayuda">Compatibilidad con el horario, la modalidad y la fecha de
+              inicio que ofrece la empresa.</p>
+            </div>
+
+            <div class="control">
+              <label for="d-eval">Resultado de la evaluación
+                <span class="valor" id="v-eval">68 / 100</span></label>
+              <input type="range" id="d-eval" min="0" max="100" step="1" value="68">
+              <p class="control__ayuda">Calificación de la prueba técnica que aplica la propia
+              empresa. Es el único dato que no sale del expediente.</p>
+            </div>
+          </form>
+
+          <details class="mt-5">
+            <summary style="cursor:pointer; font-weight:650; font-size:var(--f-sm)">
+              Pesos del modelo (los define el cliente)
+            </summary>
+            <p class="control__ayuda mt-4">
+              Cada empresa decide qué pesa más en su vacante, y ese ajuste queda registrado.
+            </p>
+            <form id="form-pesos">
+              <div class="control">
+                <label for="p-exp">Experiencia <span class="valor" id="vp-exp">25</span></label>
+                <input type="range" id="p-exp" min="0" max="50" step="1" value="25">
+              </div>
+              <div class="control">
+                <label for="p-form">Formación <span class="valor" id="vp-form">15</span></label>
+                <input type="range" id="p-form" min="0" max="50" step="1" value="15">
+              </div>
+              <div class="control">
+                <label for="p-comp">Competencias <span class="valor" id="vp-comp">30</span></label>
+                <input type="range" id="p-comp" min="0" max="50" step="1" value="30">
+              </div>
+              <div class="control">
+                <label for="p-disp">Disponibilidad <span class="valor" id="vp-disp">10</span></label>
+                <input type="range" id="p-disp" min="0" max="50" step="1" value="10">
+              </div>
+              <div class="control">
+                <label for="p-eval">Evaluación <span class="valor" id="vp-eval">20</span></label>
+                <input type="range" id="p-eval" min="0" max="50" step="1" value="20">
+              </div>
+            </form>
+          </details>
+        </div>
+
+        <!-- ---------- PANEL DERECHO: EXPLICABILIDAD ---------- -->
+        <div class="panel">
+          <p class="panel__titulo">Por qué salió ese número</p>
+          <div id="contribuciones" aria-live="polite"></div>
+
+          <p class="tenue mt-5">
+            Cada barra es lo que aportó esa variable. Nada más influyó en el resultado.
+          </p>
+
+          <hr style="border:none; border-top:1px solid var(--borde); margin:var(--e-5) 0">
+
+          <p class="panel__titulo">Lo que dejamos fuera a propósito</p>
+          <ul class="lista-limpia excluidas">
+            <li><span class="tachado">Género</span>
+              <span class="porque">Categoría protegida. Tampoco se deduce del nombre.</span></li>
+            <li><span class="tachado">Edad</span>
+              <span class="porque">Categoría protegida. Ni directa ni sacada de fechas.</span></li>
+            <li><span class="tachado">Código postal</span>
+              <span class="porque">Habla de origen y clase, no de capacidad.</span></li>
+            <li><span class="tachado">Nombre de la universidad</span>
+              <span class="porque">Sí preguntamos si tiene título; nunca de dónde. El prestigio
+              de la escuela repite el privilegio de partida.</span></li>
+            <li><span class="tachado">Pausas laborales</span>
+              <span class="porque">Castigan cuidados, enfermedad y desigualdad.</span></li>
+            <li><span class="tachado">Foto y estado civil</span>
+              <span class="porque">No dicen nada del desempeño.</span></li>
+          </ul>
+
+          <div class="callout callout--neutro" style="margin-top:var(--e-5)">
+            <h4 style="font-size:var(--f-base)">Compruébalo tú</h4>
+            <p style="font-size:var(--f-sm)">
+              Agrégale a este perfil una pausa laboral de 18 meses por cuidar a un familiar y
+              mira qué pasa.
+            </p>
+            <button class="btn btn--secundario" id="btn-pausa" type="button">
+              Añadir pausa de 18 meses
+            </button>
+            <p class="tenue mt-4 mb-0" id="msg-pausa" aria-live="polite"></p>
+          </div>
+
+          <button class="btn btn--primario mt-5" id="btn-impugnar" type="button" style="width:100%">
+            Impugnar este resultado
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AUDITORÍA DE SESGO ================= -->
+  <section class="franja">
+    <div class="contenedor">
+      <div class="encabezado-seccion">
+        <span class="kicker">Prueba de sesgo</span>
+        <h2>El control que nos frena a nosotros</h2>
+        <p class="ancho-texto">
+          Aplicamos el motor a 240 perfiles sintéticos repartidos en dos grupos con
+          <strong>la misma distribución en todo lo que el modelo mide</strong>: experiencia,
+          formación, competencias, disponibilidad y evaluación. Lo único que los separa es haber
+          podido estudiar en una universidad de prestigio. Si aun así un grupo avanza mucho menos
+          que el otro (regla del 4/5, umbral 0.80), hay indicio de discriminación.
+        </p>
+      </div>
+
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>Configura la prueba</h3>
+
+          <div class="control">
+            <label for="a-umbral">Puntaje mínimo para avanzar
+              <span class="valor" id="v-umbral">65</span></label>
+            <input type="range" id="a-umbral" min="40" max="85" step="1" value="65">
+          </div>
+
+          <div class="control">
+            <label class="switch" for="a-proxy">
+              <input type="checkbox" id="a-proxy">
+              Premiar el prestigio de la universidad
+            </label>
+            <p class="control__ayuda">
+              Es el <a href="etica.html#phronesis">Dilema 2</a> en vivo. Deja de preguntar
+              <em>si</em> hay título y empieza a premiar <em>cuál</em> escuela lo expidió: parece
+              que afina el modelo, pero en realidad mide de dónde viene cada quien. Enciéndelo y
+              mira el índice.
+            </p>
+          </div>
+
+          <div class="ratio-caja mt-5">
+            <span class="ratio-num ok" id="ratio-num">1.00</span>
+            <span>
+              <strong id="ratio-verdicto">Sin indicio de sesgo</strong><br>
+              <span class="tenue">Índice de impacto adverso (regla del 4/5)</span>
+            </span>
+          </div>
+
+          <div class="calc-salida">
+            <div class="calc-linea"><span>Grupo 1 · avanza</span><span id="tasa-1">—</span></div>
+            <div class="calc-linea"><span>Grupo 2 · avanza</span><span id="tasa-2">—</span></div>
+            <div class="calc-linea"><span>Perfiles evaluados</span><span>240</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" id="caja-alerta">
+            <h3 id="alerta-titulo">Resultado</h3>
+            <p id="alerta-texto">Mueve el umbral o enciende la variable proxy para ver cómo
+            reacciona el sistema.</p>
+            <button class="btn btn--primario" id="btn-exportar" type="button">
+              Exportar ranking
+            </button>
+            <p class="tenue mt-4 mb-0" id="msg-exportar" aria-live="polite"></p>
+          </div>
+
+          <div class="callout mt-5">
+            <h4>Por qué el freno lo ponemos nosotros</h4>
+            <p class="mb-0">
+              Si solo fuera una advertencia, cualquiera con prisa la cerraría sin leer. Por eso
+              el sistema no avisa: <strong>se detiene</strong>. Puedes seguir, pero tienes que
+              escribir por qué, queda tu nombre y se reporta al Comité de Ética. Poner el freno
+              en el código y no en el manual es la diferencia entre un compromiso y un folleto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MODAL IMPUGNACIÓN ================= -->
+  <div class="modal" id="modal-impugnar" hidden role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal__caja">
+      <h2 id="modal-titulo">Derecho a revisión humana</h2>
+      <p>
+        Cualquiera que haya sido evaluado puede pedir que una persona revise el resultado. No
+        hace falta justificar la solicitud ni probar que hubo error.
+      </p>
+      <ol>
+        <li>Escribes a <span class="mono">derechos@ethostalent.mx</span> con la vacante y la
+        fecha en que te postulaste.</li>
+        <li>Recibes el desglose completo que ves en esta pantalla: variables, pesos, puntos y
+        versión del modelo.</li>
+        <li>Lo revisa un analista distinto del que decidió la primera vez.</li>
+        <li><strong>Máximo 10 días hábiles.</strong> Si no cumplimos, el cliente recibe un mes
+        gratis y tú una explicación por escrito.</li>
+        <li>Si hubo un error, tu candidatura vuelve al proceso y le avisamos al cliente.</li>
+      </ol>
+      <p class="tenue">
+        Este es el flujo real de nuestra <a href="privacidad.html#revision">política de
+        datos</a>. En la demo no se envía nada.
+      </p>
+      <div class="btn-fila">
+        <button class="btn btn--primario" id="btn-cerrar-modal" type="button">Entendido</button>
+        <a class="btn btn--secundario" href="privacidad.html#derechos">Ver todos los derechos</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie__grid">
+      <div>
+        <h4>Ethos Talent</h4>
+        <p style="font-size:var(--f-sm)">
+          Tecnología que respeta a las personas.<br>
+          Ciudad de México, México.
+        </p>
+        <p class="sello">◆ Auditoría externa semestral publicada</p>
+      </div>
+      <div>
+        <h4>Producto</h4>
+        <ul>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="demo.html">Demostración del motor</a></li>
+          <li><a href="precios.html">Precios y SLA</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Transparencia</h4>
+        <ul>
+          <li><a href="etica.html">Compromiso Ético</a></li>
+          <li><a href="etica.html#phronesis">Dilemas que enfrentamos</a></li>
+          <li><a href="etica.html#pendientes">Lo que aún no resolvemos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Para candidatos</h4>
+        <ul>
+          <li><a href="privacidad.html#derechos">Tus derechos</a></li>
+          <li><a href="privacidad.html#revision">Pedir revisión humana</a></li>
+          <li><a href="privacidad.html#denuncia">Canal de denuncia</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie__base">
+      <span>© <span data-anio>2026</span> Ethos Talent S.A.P.I. de C.V. — Empresa ficticia con fines académicos.</span>
+      <span>Ana Karen López Jiménez · Fernando Acuña Martínez · Frida Sofía Escamilla Olguín · Pamela Ruíz Velasco</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/demo.js"></script>
