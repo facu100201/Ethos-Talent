@@ -207,7 +207,8 @@
   }
 
   function pintarResultado() {
-    var r = calcular(datosFormulario(), pesos());
+    var datos = datosFormulario();
+    var r = calcular(datos, pesos());
     var total = Math.round(r.total);
 
     el('score-num').textContent = total;
@@ -258,6 +259,114 @@
       wrap.appendChild(nota);
       cont.appendChild(wrap);
     });
+
+    pintarResumen(r, datos);
+  }
+
+  /* ---------------------------------------------------------------
+     Conclusión ejecutiva
+
+     Seis tramos para los 101 resultados posibles. Ninguno recomienda
+     descartar a nadie: describen la evidencia disponible y señalan qué
+     conviene verificar. La decisión siempre se devuelve a la persona.
+     --------------------------------------------------------------- */
+  var TRAMOS = [
+    {
+      min: 90,
+      etq: 'Coincidencia muy alta con el perfil buscado',
+      frase: 'El expediente cubre prácticamente todo lo que pide la vacante. Conviene ' +
+             'priorizar la entrevista y usarla para verificar en persona lo que un formulario ' +
+             'no alcanza a mostrar.'
+    },
+    {
+      min: 75,
+      etq: 'Coincidencia alta con el perfil buscado',
+      frase: 'El expediente cubre con holgura los requisitos declarados. La entrevista debería ' +
+             'concentrarse en el margen que queda abierto y en los aspectos que no se miden aquí.'
+    },
+    {
+      min: 60,
+      etq: 'Buena coincidencia, con puntos que verificar',
+      frase: 'El perfil responde a lo esencial de la vacante, aunque no en todos los criterios ' +
+             'por igual. Vale la pena confirmar en entrevista el punto más débil antes de sacar ' +
+             'conclusiones.'
+    },
+    {
+      min: 45,
+      etq: 'Coincidencia media: hace falta más información',
+      frase: 'El expediente responde a una parte de lo que pide la vacante. Un resultado en este ' +
+             'rango suele significar que falta información en el formato del CV, no que la ' +
+             'persona no pueda hacer el trabajo.'
+    },
+    {
+      min: 25,
+      etq: 'Coincidencia parcial con lo declarado en la vacante',
+      frase: 'Con lo capturado, el expediente coincide poco con los requisitos. Antes de ' +
+             'concluir nada conviene revisarlo a mano: la experiencia relevante muchas veces no ' +
+             'aparece con el nombre que el puesto usa.'
+    },
+    {
+      min: 0,
+      etq: 'Evidencia insuficiente para estimar el encaje',
+      frase: 'No hay datos suficientes para que el modelo diga algo útil. Esto habla del ' +
+             'expediente, no de la persona: puede estar incompleto, mal capturado o describir la ' +
+             'misma experiencia con otras palabras. Corresponde revisarlo manualmente.'
+    }
+  ];
+
+  function tramoDe(n) {
+    for (var i = 0; i < TRAMOS.length; i++) {
+      if (n >= TRAMOS[i].min) return TRAMOS[i];
+    }
+    return TRAMOS[TRAMOS.length - 1];
+  }
+
+  function pintarResumen(r, datos) {
+    var titulo = el('resumen-titulo');
+    var cuerpo = el('resumen-cuerpo');
+    var total = Math.round(r.total);
+
+    if (r.sumaPesos === 0) {
+      titulo.textContent = 'Sin criterios activos';
+      cuerpo.innerHTML = 'Todos los pesos están en cero, así que el modelo no está evaluando ' +
+        'nada. El 0 que ves no dice nada de la persona: dice que no le hemos pedido al sistema ' +
+        'que mire ningún criterio.';
+      return;
+    }
+
+    var tramo = tramoDe(total);
+
+    /* Lo que más aporta y donde queda más margen */
+    var fuerte = r.aportes[0], debil = r.aportes[0], maxPerdida = -1;
+    r.aportes.forEach(function (a) {
+      if (a.puntos > fuerte.puntos) fuerte = a;
+      var perdida = a.tope - a.puntos;
+      if (perdida > maxPerdida) { maxPerdida = perdida; debil = a; }
+    });
+
+    var texto = 'Con los pesos configurados, esta candidatura obtiene <em>' + total +
+      ' de 100</em>, en un rango real de ' + Math.max(0, total - 6) + ' a ' +
+      Math.min(100, total + 6) + '. ' + tramo.frase + ' ';
+
+    texto += 'Lo que más suma es <em>' + fuerte.variable.nombre.toLowerCase() + '</em> (' +
+      fuerte.puntos.toFixed(1) + ' de ' + fuerte.tope.toFixed(1) + ' pts posibles)';
+
+    if (maxPerdida >= 0.5) {
+      texto += ', y donde queda más margen es <em>' + debil.variable.nombre.toLowerCase() +
+        '</em> (' + debil.puntos.toFixed(1) + ' de ' + debil.tope.toFixed(1) + ' pts).';
+    } else {
+      texto += ', y no queda margen relevante: el perfil está en el tope de todos los ' +
+        'criterios activos.';
+    }
+
+    var c = CANDIDATOS.filter(function (x) { return x.id === actual; })[0];
+    if (c && c.pausa > 0) {
+      texto += ' Nota: el expediente declara ' + c.pausa + ' meses de pausa laboral, que ' +
+        '<em>no</em> restaron un solo punto.';
+    }
+
+    titulo.textContent = tramo.etq;
+    cuerpo.innerHTML = texto;
   }
 
   function refrescar() {

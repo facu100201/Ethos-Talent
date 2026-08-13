@@ -101,7 +101,8 @@
      --------------------------------------------------------------- */
   if (!menosMovimiento && 'IntersectionObserver' in window) {
     var objetivos = document.querySelectorAll(
-      '.card, .callout, .tabla-wrap, .acordeon, .encabezado-seccion, .preview, .panel'
+      '.card, .callout, .tabla-wrap, .acordeon, .encabezado-seccion, .preview, .panel,' +
+      '.lista-numerada > li, .pasos > li, .franja-datos > *, .carrusel'
     );
 
     Array.prototype.forEach.call(objetivos, function (el) {

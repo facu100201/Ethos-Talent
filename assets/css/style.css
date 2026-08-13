@@ -476,6 +476,151 @@ section.compacta { padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); }
 .marca-no { background: linear-gradient(165deg, var(--coral-500), var(--coral-700)); }
 
 /* --------------------------------------------------------------------------
+   7b. Patrones de composición
+   Cinco maneras distintas de presentar un conjunto de ideas, para que
+   ninguna página repita la misma retícula de tarjetas.
+   -------------------------------------------------------------------------- */
+
+/* --- A. Lista numerada editorial: columnas separadas por filete, sin caja --- */
+.lista-numerada {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+.lista-numerada > li {
+  margin: 0; max-width: none; position: relative;
+  padding: var(--e-2) var(--e-6);
+  border-left: 1px solid var(--borde);
+}
+.lista-numerada > li:first-child { padding-left: 0; border-left: 0; }
+.lista-numerada__n {
+  display: block; font-size: 2.7rem; font-weight: 660;
+  letter-spacing: -.06em; line-height: 1; margin-bottom: var(--e-4);
+  font-variant-numeric: tabular-nums;
+  color: var(--aqua-700);
+  background: linear-gradient(160deg, var(--aqua-300), var(--aqua-800));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.lista-numerada h3, .lista-numerada h4 { margin-bottom: var(--e-3); }
+.lista-numerada p { font-size: var(--f-sm); color: var(--texto-suave); margin-bottom: 0; }
+@media (max-width: 720px) {
+  .lista-numerada > li {
+    border-left: 0; border-top: 1px solid var(--borde);
+    padding: var(--e-5) 0;
+  }
+  .lista-numerada > li:first-child { border-top: 0; padding-top: 0; }
+  .lista-numerada__n { font-size: 2.1rem; margin-bottom: var(--e-3); }
+}
+
+/* --- B. Franja de datos: filete de color arriba, sin caja --- */
+.franja-datos {
+  display: grid; gap: var(--e-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 215px), 1fr));
+}
+.franja-datos > * {
+  padding-top: var(--e-5);
+  border-top: 3px solid var(--borde-fuerte);
+  transition: border-color .3s ease;
+}
+.franja-datos > :nth-child(4n+1) { border-top-color: var(--aqua-500); }
+.franja-datos > :nth-child(4n+2) { border-top-color: var(--hoja-500); }
+.franja-datos > :nth-child(4n+3) { border-top-color: var(--aqua-300); }
+.franja-datos > :nth-child(4n+4) { border-top-color: var(--sol-500); }
+.franja-datos h4 { margin-bottom: var(--e-3); }
+.franja-datos p:last-child { margin-bottom: 0; }
+
+/* --- C. Pasos conectados por una línea --- */
+.pasos {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: var(--e-6);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+.pasos > li {
+  margin: 0; max-width: none; position: relative;
+  padding-top: calc(30px + var(--e-4));
+}
+.pasos__punto {
+  position: absolute; top: 0; left: 0; z-index: 1;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(165deg, var(--aqua-500), var(--aqua-700));
+  color: #fff; font-size: var(--f-xs); font-weight: 700;
+  box-shadow: var(--sombra-1), inset 0 1px 0 rgba(255,255,255,.5);
+}
+.pasos > li::after {
+  content: ""; position: absolute; top: 14px; left: 38px;
+  right: calc(var(--e-6) * -1); height: 2px; border-radius: 999px;
+  background: linear-gradient(90deg, var(--aqua-300), rgba(127,208,229,0));
+}
+.pasos > li:last-child::after { display: none; }
+.pasos h3 { margin-bottom: var(--e-3); }
+.pasos p { font-size: var(--f-sm); color: var(--texto-suave); margin-bottom: 0; }
+@media (max-width: 760px) { .pasos > li::after { display: none; } }
+
+/* --- D. Bento: tarjetas de tamaños distintos --- */
+.bento { display: grid; gap: var(--e-4); }
+@media (min-width: 900px) {
+  .bento { grid-template-columns: repeat(3, 1fr); }
+  .bento > :nth-child(4n+1),
+  .bento > :nth-child(4n+4) { grid-column: span 2; }
+}
+/* Variante para exactamente tres piezas: una destacada a la izquierda */
+.bento-3 { display: grid; gap: var(--e-4); }
+@media (min-width: 880px) {
+  .bento-3 { grid-template-columns: 1.3fr 1fr; align-items: stretch; }
+  .bento-3 > :first-child { grid-row: span 2; }
+}
+
+/* --- E. Carrusel con anclaje de desplazamiento --- */
+.carrusel {
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--e-4);
+  padding: var(--e-2) var(--e-4) var(--e-5);
+  margin-inline: calc(var(--e-4) * -1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--aqua-300) transparent;
+}
+.carrusel:focus-visible { outline: 2px solid var(--acento); outline-offset: 4px; border-radius: var(--radio); }
+.carrusel::-webkit-scrollbar { height: 8px; }
+.carrusel::-webkit-scrollbar-track { background: var(--bg-sunken); border-radius: 999px; }
+.carrusel::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, var(--aqua-300), var(--hoja-300));
+  border-radius: 999px;
+}
+.carrusel__pista { display: flex; gap: var(--e-4); list-style: none; padding: 0; margin: 0; }
+.carrusel__nota {
+  font-size: var(--f-xs); color: var(--texto-tenue);
+  margin: 0 0 var(--e-4); display: flex; align-items: center; gap: .45rem;
+}
+
+.ficha {
+  position: relative; overflow: hidden;
+  flex: 0 0 clamp(238px, 74vw, 290px);
+  scroll-snap-align: start;
+  margin: 0; max-width: none;
+  padding: var(--e-5);
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  background: var(--vidrio-alto);
+  box-shadow: var(--sombra-0);
+  transition: transform .3s cubic-bezier(.2,.8,.3,1), box-shadow .3s ease, border-color .3s ease;
+}
+.ficha:hover { transform: translateY(-4px); box-shadow: var(--sombra-2); border-color: var(--aqua-300); }
+.ficha__n {
+  position: absolute; top: .55rem; right: .95rem; z-index: 0;
+  font-size: 3.4rem; font-weight: 700; line-height: 1;
+  color: var(--aqua-100); letter-spacing: -.06em;
+  font-variant-numeric: tabular-nums; pointer-events: none;
+}
+.ficha > * { position: relative; z-index: 1; }
+.ficha h4 { margin-bottom: var(--e-3); padding-right: 2.2rem; }
+.ficha p { font-size: var(--f-sm); color: var(--texto-suave); margin-bottom: 0; }
+.ficha--final { border-color: var(--aqua-300); background: linear-gradient(165deg, var(--aqua-100), rgba(255,255,255,.85)); }
+.ficha--final .ficha__n { color: rgba(255,255,255,.75); }
+
+/* --------------------------------------------------------------------------
    8. Callouts
    -------------------------------------------------------------------------- */
 .callout {
@@ -513,6 +658,9 @@ section.compacta { padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); }
 /* --------------------------------------------------------------------------
    9. Cifras
    -------------------------------------------------------------------------- */
+/* El texto de una cifra llena su columna: no le aplica el ancho de lectura */
+.stat, .stat p { max-width: none; }
+
 .stat__num {
   font-size: clamp(2.4rem, 1.7rem + 3vw, 3.6rem);
   font-weight: 640; line-height: 1; letter-spacing: -.045em;
@@ -859,6 +1007,46 @@ select:hover { border-color: var(--aqua-500); box-shadow: var(--sombra-1), var(-
   background: linear-gradient(90deg, var(--aqua-500), var(--hoja-500));
   box-shadow: inset 0 1px 0 rgba(255,255,255,.55);
   transition: width .5s cubic-bezier(.2,.8,.3,1);
+}
+
+/* Conclusión ejecutiva del resultado */
+.resumen {
+  margin: 0 0 var(--e-6);
+  padding: var(--e-5);
+  border-radius: var(--radio);
+  background: linear-gradient(165deg, var(--aqua-100), rgba(255,255,255,.8));
+  border: 1px solid var(--aqua-300);
+  box-shadow: var(--brillo);
+}
+.resumen__etq {
+  font-size: var(--f-xs); font-weight: 600; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--acento);
+  margin: 0 0 .55rem;
+}
+.resumen__titulo {
+  font-size: var(--f-md); font-weight: 620; letter-spacing: -.015em;
+  color: var(--texto); margin: 0 0 .55rem; max-width: none;
+}
+.resumen__cuerpo {
+  font-size: var(--f-sm); color: var(--texto-suave);
+  line-height: 1.65; margin: 0; max-width: none;
+}
+.resumen__cuerpo em {
+  font-style: normal; font-weight: 600; color: var(--texto);
+}
+/* Bloque de texto corrido: nada de flex aquí. Con display:flex, el texto
+   suelto, el <strong> y el resto se vuelven ítems separados y se apilan
+   en columnas estrechas. */
+.resumen__decision {
+  position: relative;
+  margin: var(--e-4) 0 0;
+  padding: var(--e-4) 0 0 1.45rem;
+  border-top: 1px solid var(--aqua-300);
+  font-size: var(--f-xs); line-height: 1.65; color: var(--texto-suave); max-width: none;
+}
+.resumen__decision > span {
+  position: absolute; left: 0; top: var(--e-4);
+  color: var(--acento); line-height: 1.65;
 }
 
 .contrib { margin-bottom: var(--e-4); }

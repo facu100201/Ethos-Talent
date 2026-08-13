@@ -42,11 +42,12 @@
   <section class="cabecera-pagina">
     <div class="contenedor">
       <span class="kicker">Demostración pública</span>
-      <h1>Ábrelo, muévelo, trata de romperlo</h1>
+      <h1>Explore el motor por dentro</h1>
       <p class="ancho-texto">
-        Es el mismo cálculo que corre en producción, con datos ficticios. Sin registro, sin
-        correo y sin versión «completa» que se vea distinta. Si decimos que el modelo es
-        auditable, lo mínimo es dejar que lo audites.
+        Esta demostración ejecuta el mismo cálculo que opera en producción, con datos
+        ficticios. No requiere registro ni correo, y no existe una versión distinta para
+        clientes. Afirmamos que el modelo es auditable, de modo que ponemos a su
+        disposición los medios para comprobarlo.
       </p>
     </div>
   </section>
@@ -55,8 +56,8 @@
     <div class="contenedor">
       <p class="banner-demo">
         <span aria-hidden="true">▲</span>
-        <span><strong>Datos sintéticos.</strong> Aquí no se evalúa a nadie real: los perfiles
-        A–E y la población de la auditoría son inventados para esta demo.</span>
+        <span><strong>Datos sintéticos.</strong> Esta demostración no evalúa a ninguna persona
+        real: los perfiles A–E y la población de la auditoría se generaron para este fin.</span>
       </p>
 
       <div class="demo-grid">
@@ -67,8 +68,8 @@
           <div id="lista-candidatos" role="group" aria-label="Selecciona una candidatura"></div>
 
           <p class="tenue mt-5 mb-0">
-            El orden es una sugerencia. En producción ninguna ficha se puede rechazar desde
-            aquí: ese botón no existe.
+            El orden es una sugerencia. En producción, ninguna candidatura puede rechazarse
+            desde esta pantalla: esa acción no está disponible en la interfaz.
           </p>
         </div>
 
@@ -81,6 +82,18 @@
             <p class="score-etq" id="score-etq">Qué tanto encaja con el puesto</p>
             <div class="score-banda"><i id="score-banda" style="width:0%"></i></div>
             <p class="tenue mb-0" id="score-intervalo"></p>
+          </div>
+
+          <div class="resumen" id="resumen" aria-live="polite">
+            <p class="resumen__etq">Conclusión ejecutiva</p>
+            <p class="resumen__titulo" id="resumen-titulo">—</p>
+            <p class="resumen__cuerpo" id="resumen-cuerpo"></p>
+            <p class="resumen__decision">
+              <span aria-hidden="true">◆</span>
+              Esto es un insumo, no un veredicto. <strong>La decisión final corresponde al
+              reclutador y al área de Recursos Humanos</strong>, que pueden ponderar información
+              que este modelo no ve y apartarse del orden sugerido dejando constancia del motivo.
+            </p>
           </div>
 
           <form id="form-datos">
@@ -185,16 +198,17 @@
 
         <!-- ---------- PANEL DERECHO: EXPLICABILIDAD ---------- -->
         <div class="panel">
-          <p class="panel__titulo">Por qué salió ese número</p>
+          <p class="panel__titulo">Explicación del resultado</p>
           <div id="contribuciones" aria-live="polite"></div>
 
           <p class="tenue mt-5">
-            Cada barra es lo que aportó esa variable. Nada más influyó en el resultado.
+            Cada barra indica los puntos que aportó esa variable. Ninguna otra información
+            intervino en el resultado.
           </p>
 
           <hr style="border:none; border-top:1px solid var(--borde); margin:var(--e-5) 0">
 
-          <p class="panel__titulo">Lo que dejamos fuera a propósito</p>
+          <p class="panel__titulo">Variables excluidas por diseño</p>
           <ul class="lista-limpia excluidas">
             <li><span class="tachado">Género</span>
               <span class="porque">Categoría protegida. Tampoco se deduce del nombre.</span></li>
@@ -212,10 +226,10 @@
           </ul>
 
           <div class="callout callout--neutro" style="margin-top:var(--e-5)">
-            <h4 style="font-size:var(--f-base)">Compruébalo tú</h4>
+            <h4 style="font-size:var(--f-base)">Verifíquelo usted mismo</h4>
             <p style="font-size:var(--f-sm)">
-              Agrégale a este perfil una pausa laboral de 18 meses por cuidar a un familiar y
-              mira qué pasa.
+              Añada a este perfil una pausa laboral de 18 meses por cuidado de un familiar y
+              observe el efecto sobre el resultado.
             </p>
             <button class="btn btn--secundario" id="btn-pausa" type="button">
               Añadir pausa de 18 meses
@@ -236,7 +250,7 @@
     <div class="contenedor">
       <div class="encabezado-seccion">
         <span class="kicker">Prueba de sesgo</span>
-        <h2>El control que nos frena a nosotros</h2>
+        <h2>El control que nos aplicamos a nosotros mismos</h2>
         <p class="ancho-texto">
           Aplicamos el motor a 240 perfiles sintéticos repartidos en dos grupos con
           <strong>la misma distribución en todo lo que el modelo mide</strong>: experiencia,
@@ -262,10 +276,10 @@
               Premiar el prestigio de la universidad
             </label>
             <p class="control__ayuda">
-              Es el <a href="etica.html#phronesis">Dilema 2</a> en vivo. Deja de preguntar
-              <em>si</em> hay título y empieza a premiar <em>cuál</em> escuela lo expidió: parece
-              que afina el modelo, pero en realidad mide de dónde viene cada quien. Enciéndelo y
-              mira el índice.
+              Reproduce el <a href="etica.html#phronesis">Dilema 2</a> en condiciones reales.
+              El modelo deja de preguntar <em>si</em> existe un título y pasa a premiar
+              <em>cuál</em> institución lo expidió: en apariencia afina la predicción, pero en
+              realidad mide el origen social. Actívelo y observe el índice.
             </p>
           </div>
 
@@ -287,8 +301,8 @@
         <div>
           <div class="card" id="caja-alerta">
             <h3 id="alerta-titulo">Resultado</h3>
-            <p id="alerta-texto">Mueve el umbral o enciende la variable proxy para ver cómo
-            reacciona el sistema.</p>
+            <p id="alerta-texto">Ajuste el umbral o active la variable proxy para observar la
+            reacción del sistema.</p>
             <button class="btn btn--primario" id="btn-exportar" type="button">
               Exportar ranking
             </button>
@@ -298,10 +312,12 @@
           <div class="callout mt-5">
             <h4>Por qué el freno lo ponemos nosotros</h4>
             <p class="mb-0">
-              Si solo fuera una advertencia, cualquiera con prisa la cerraría sin leer. Por eso
-              el sistema no avisa: <strong>se detiene</strong>. Puedes seguir, pero tienes que
-              escribir por qué, queda tu nombre y se reporta al Comité de Ética. Poner el freno
-              en el código y no en el manual es la diferencia entre un compromiso y un folleto.
+              Una advertencia que puede cerrarse con un clic rara vez modifica una decisión
+              tomada con prisa. Por eso el sistema no se limita a avisar:
+              <strong>se detiene</strong>. Es posible continuar, pero se requiere una
+              justificación por escrito, queda registrado el responsable y se informa al
+              Comité de Ética. Situar el control en el código, y no únicamente en el manual,
+              es lo que convierte el compromiso en algo verificable.
             </p>
           </div>
         </div>
@@ -314,18 +330,18 @@
     <div class="modal__caja">
       <h2 id="modal-titulo">Derecho a revisión humana</h2>
       <p>
-        Cualquiera que haya sido evaluado puede pedir que una persona revise el resultado. No
-        hace falta justificar la solicitud ni probar que hubo error.
+        Toda persona evaluada puede solicitar que un ser humano identificado revise el
+        resultado. No es necesario motivar la solicitud ni acreditar la existencia de un error.
       </p>
       <ol>
-        <li>Escribes a <span class="mono">derechos@ethostalent.mx</span> con la vacante y la
-        fecha en que te postulaste.</li>
-        <li>Recibes el desglose completo que ves en esta pantalla: variables, pesos, puntos y
-        versión del modelo.</li>
+        <li>La solicitud se dirige a <span class="mono">derechos@ethostalent.mx</span>
+        indicando la vacante y la fecha de postulación.</li>
+        <li>Se entrega el desglose completo que aparece en esta pantalla: variables, pesos,
+        puntos aportados y versión del modelo.</li>
         <li>Lo revisa un analista distinto del que decidió la primera vez.</li>
-        <li><strong>Máximo 10 días hábiles.</strong> Si no cumplimos, el cliente recibe un mes
-        gratis y tú una explicación por escrito.</li>
-        <li>Si hubo un error, tu candidatura vuelve al proceso y le avisamos al cliente.</li>
+        <li><strong>Plazo máximo: 10 días hábiles.</strong> Si se incumple, el cliente recibe
+        un mes gratuito y la persona afectada una explicación por escrito.</li>
+        <li>Si se detecta un error, la candidatura vuelve al proceso y se notifica al cliente.</li>
       </ol>
       <p class="tenue">
         Este es el flujo real de nuestra <a href="privacidad.html#revision">política de
@@ -370,7 +386,7 @@
       <div>
         <h4>Para candidatos</h4>
         <ul>
-          <li><a href="privacidad.html#derechos">Tus derechos</a></li>
+          <li><a href="privacidad.html#derechos">Derechos del candidato</a></li>
           <li><a href="privacidad.html#revision">Pedir revisión humana</a></li>
           <li><a href="privacidad.html#denuncia">Canal de denuncia</a></li>
         </ul>
